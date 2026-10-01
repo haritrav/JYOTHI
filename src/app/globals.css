@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 222 47% 11%;
+    --primary: 330 81% 45%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 24 95% 53%;
+    --radius: 1.25rem;
+  }
+
+  body {
+    @apply bg-warm-50 text-slate-900 antialiased selection:bg-jyothi-500 selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Accessible focus visible outlines */
+*:focus-visible {
+  outline: 3px solid #cb267c !important;
+  outline-offset: 2px !important;
+}
+
+/* Hide scrollbars for clean mobile view */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe bottom margin for mobile screens */
+.safe-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
