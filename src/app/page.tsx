@@ -35,12 +35,18 @@ import { AdminDashboard } from '@/components/admin/AdminDashboard';
 import { NeutralWeatherView } from '@/components/safety/SafeExitButton';
 
 export default function JyothiApp() {
+  const [isMounted, setIsMounted] = useState(false);
+
   // Navigation & Onboarding States
   const [onboardingStep, setOnboardingStep] = useState<'language' | 'location' | 'main' | 'neutral_exit'>('language');
   const [language, setLanguage] = useState<SupportedLanguage>('ta');
   const [textSize, setTextSize] = useState<TextSize>('normal');
   const [isHighContrast, setIsHighContrast] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<TabType>('home');
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Location State
   const [location, setLocation] = useState<UserLocation>({
@@ -168,6 +174,14 @@ export default function JyothiApp() {
 
   // Text size class mapping
   const textSizeClass = textSize === 'large' ? 'text-scale-large' : textSize === 'xlarge' ? 'text-scale-xlarge' : 'text-scale-normal';
+
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-purple-950 via-indigo-950 to-slate-950 flex items-center justify-center">
+        <div className="w-12 h-12 rounded-full border-4 border-amber-400 border-t-transparent animate-spin" />
+      </div>
+    );
+  }
 
   // 1. NEUTRAL SAFE QUICK EXIT VIEW
   if (onboardingStep === 'neutral_exit') {
