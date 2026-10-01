@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Accessibility Font Size Scales */
+.text-scale-normal {
+  font-size: 1rem;
+}
+
+.text-scale-large {
+  font-size: 1.15rem;
+}
+
+.text-scale-xlarge {
+  font-size: 1.3rem;
+}
+
+/* High Contrast Override */
+.high-contrast-mode {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.high-contrast-mode button,
+.high-contrast-mode a,
+.high-contrast-mode input,
+.high-contrast-mode select {
+  border-color: #ffff00 !important;
+}
+
+/* Pulse Keyframes */
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2.5s infinite ease-in-out;
+}
+
+/* Safe Area Paddings for mobile devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 12px);
+}
